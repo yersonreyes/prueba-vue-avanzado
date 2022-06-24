@@ -51,13 +51,13 @@ export default {
     async onSubmit(event) {
       event.preventDefault();
       await this.signInWithEmailAndPassword(this.form);
-      this.$router.push(`/`);
+      this.$router.push(`/cursos`);
     },
 
     async crearUsuario() {
       await this.createUserWithEmailAndPassword(this.form);
       await this.signInWithEmailAndPassword(this.form);
-      this.$router.push(`/`);
+      this.$router.push(`/cursos`);
     },
   },
 };

@@ -10,7 +10,6 @@
 
       <b-collapse v-if="activeLogin" id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <router-link class="nav-link" to="/">Home</router-link>
           <router-link class="nav-link" to="/cursos">Cursos</router-link>
           <router-link class="nav-link" to="/administracion"
             >Administracion</router-link
