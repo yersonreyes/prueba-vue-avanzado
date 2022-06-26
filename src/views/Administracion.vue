@@ -4,26 +4,49 @@
       >Agregar Curso</b-button
     >
     <ModalComponente />
-    <ul id="example-1">
-      <li v-for="curso in cursos" :key="curso.id">
-        {{ curso.id }}
-      </li>
-    </ul>
+    <table class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Curso</th>
+          <th scope="col">Cupos</th>
+          <th scope="col">Inscritos</th>
+          <th scope="col">Duracion</th>
+          <th scope="col">Costo</th>
+          <th scope="col">Terminado</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <TableComponente
+          v-for="item in cursos"
+          :key="item.id"
+          :curso="item.curso"
+          :cupos="item.cupos"
+          :inscritos="item.inscritos"
+          :duracion="item.duracion"
+          :costo="item.costo"
+          :terminado="item.terminado"
+          :fecha="item.fecha"
+          :id="item.id"
+        />
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import ModalComponente from "@/components/ModalComponente.vue";
+import TableComponente from "@/components/TableComponente.vue";
+
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
     ModalComponente,
+    TableComponente,
   },
   computed: {
-    ...mapState("cursos", {
-      cursos: (state) => state.cursos,
-      loading: (state) => state.loading,
-    }),
+    ...mapState("cursos", ["cursos"]),
   },
 
   methods: {

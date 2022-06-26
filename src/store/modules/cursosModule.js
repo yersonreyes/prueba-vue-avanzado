@@ -36,5 +36,32 @@ export const cursosModule = {
         commit("SET_LOADING", false);
       }
     },
+
+    async postCurso({ commit }, curso) {
+      commit("SET_LOADING", true);
+      try {
+        const UsersCollection = await Firebase.firestore()
+          .collection("cursos")
+          .doc()
+          .set(curso);
+
+        console.log(UsersCollection);
+      } catch (e) {
+        console.error("Error al traer Usuarios de Firebase", e);
+      } finally {
+        commit("SET_LOADING", false);
+      }
+    },
+
+    async removeOneById({ commit }, id) {
+      commit("SET_LOADING", true);
+      try {
+        await Firebase.firestore().collection("cursos").doc(id).delete();
+      } catch (e) {
+        console.error("Error al borrar documento: ", id);
+      } finally {
+        commit("SET_LOADING", false);
+      }
+    },
   },
 };
