@@ -35,6 +35,18 @@
         v-model="form.fecha"
         placeholder="Fecha"
       ></b-form-input>
+      <b-form-input
+        class="mt-2"
+        type="text"
+        v-model="form.descripcion"
+        placeholder="descripcion"
+      ></b-form-input>
+      <b-form-input
+        class="mt-2"
+        type="text"
+        v-model="form.url"
+        placeholder="url"
+      ></b-form-input>
       <b-form-group label="Curso terminado" v-slot="{ ariaDescribedby }">
         <b-form-radio
           v-model="form.terminado"
@@ -72,6 +84,8 @@ export default {
         costo: "",
         terminado: "",
         fecha: "",
+        descripcion: "",
+        url: "",
       },
     };
   },

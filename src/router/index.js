@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Usuario from "../views/Usuario.vue";
 import Cursos from "../views/Cursos.vue";
 import Administracion from "../views/Administracion.vue";
+import Editar from "../views/Editar.vue";
 
 import Store from "@/store/";
 
@@ -47,6 +48,14 @@ const routes = [
     path: "/administracion",
     name: "administracion",
     component: Administracion,
+    meta: {
+      accessLevel: "private",
+    },
+  },
+  {
+    path: "/administracion/:id",
+    name: "editar",
+    component: Editar,
     meta: {
       accessLevel: "private",
     },

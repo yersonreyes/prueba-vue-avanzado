@@ -8,21 +8,21 @@
       <span class="badge badge-success">${{ costo }}</span>
     </td>
     <td>
-      <span class="badge badge-secondary">{{ terminado }}</span>
+      <span
+        :class="terminado === 'true' ? 'badge-primary' : 'badge-secondary'"
+        class="badge"
+        >{{ terminado === "true" ? "Si" : "No" }}</span
+      >
     </td>
     <td>
       <span class="badge badge-success">{{ fecha }}</span>
     </td>
     <td class="d-flex">
-      <button class="btn btn-primary">
+      <button @click="editarCurso()" class="btn btn-primary">
         <b-icon icon="pencil-fill" font-scale="0.9"></b-icon>
       </button>
-      <button class="ml-2 btn btn-danger">
-        <b-icon
-          @click="eleiminarCurso()"
-          icon="trash-fill"
-          font-scale="0.9"
-        ></b-icon>
+      <button @click="eleiminarCurso()" class="ml-2 btn btn-danger">
+        <b-icon icon="trash-fill" font-scale="0.9"></b-icon>
       </button>
     </td>
   </tr>
@@ -51,6 +51,10 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+
+    editarCurso() {
+      this.$router.push(`/administracion/${this.id}`);
     },
   },
 };

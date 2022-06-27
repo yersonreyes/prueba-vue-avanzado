@@ -29,9 +29,15 @@
           :terminado="item.terminado"
           :fecha="item.fecha"
           :id="item.id"
+          :descripcion="item.descripcion"
+          :url="item.url"
         />
       </tbody>
     </table>
+    <b-alert show variant="primary"> cantidad de alumnos inscritos</b-alert>
+    <b-alert show variant="primary">
+      cantidad de cursos: {{ cursos.length }}
+    </b-alert>
   </div>
 </template>
 

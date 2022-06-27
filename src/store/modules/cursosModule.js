@@ -4,12 +4,16 @@ export const cursosModule = {
   namespaced: true,
   state: {
     cursos: null,
+    doc: null,
     loading: false,
   },
 
   mutations: {
     SET_CURSOS(state, newCurso) {
       state.cursos = newCurso;
+    },
+    SET_CURSO(state, newCurso) {
+      state.doc = newCurso;
     },
     SET_LOADING(state, newLoading) {
       state.loading = newLoading;
@@ -37,6 +41,22 @@ export const cursosModule = {
       }
     },
 
+    async getCurso({ commit }, curso) {
+      commit("SET_LOADING", true);
+      try {
+        const doc = await Firebase.firestore()
+          .collection("cursos")
+          .doc(curso)
+          .get();
+
+        commit("SET_CURSO", doc.data());
+      } catch (e) {
+        console.error("Error al traer Usuarios de Firebase", e);
+      } finally {
+        commit("SET_LOADING", false);
+      }
+    },
+
     async postCurso({ commit }, curso) {
       commit("SET_LOADING", true);
       try {
@@ -46,6 +66,20 @@ export const cursosModule = {
           .set(curso);
 
         console.log(UsersCollection);
+      } catch (e) {
+        console.error("Error al traer Usuarios de Firebase", e);
+      } finally {
+        commit("SET_LOADING", false);
+      }
+    },
+
+    async updateCurso({ commit }, curso) {
+      commit("SET_LOADING", true);
+      try {
+        await Firebase.firestore()
+          .collection("cursos")
+          .doc(curso.id)
+          .update(curso.data);
       } catch (e) {
         console.error("Error al traer Usuarios de Firebase", e);
       } finally {
