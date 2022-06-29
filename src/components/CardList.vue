@@ -1,8 +1,8 @@
 <template>
   <div class="col">
     <b-card
-      :title="titulo"
-      img-src="https://picsum.photos/600/300/?image=25"
+      :title="curso"
+      :img-src="url"
       img-alt="Image"
       img-top
       tag="article"
@@ -11,22 +11,21 @@
     >
       <b-list-group flush>
         <b-list-group-item
-          >Costo <br />
-          Duracion
+          >Costo: {{ costo }} <br />
+          Duracion: {{ duracion }}
         </b-list-group-item>
         <b-list-group-item
-          >Cupos <br />
-          Completado
+          >Cupos:{{ cupos }} <br />
+          Completado {{ terminado === "true" ? "Si" : "No" }}
         </b-list-group-item>
         <b-list-group-item
           >Fecha de registro <br />
-          06/03/2021
+          {{ fecha }}
         </b-list-group-item>
 
         <b-list-group-item
           >Descripcion <br />
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam,
-          suscipit?
+          {{ descripcion }}
         </b-list-group-item>
       </b-list-group>
     </b-card>
@@ -35,7 +34,18 @@
 
 <script>
 export default {
-  props: ["imagen", "titulo", "informacion"],
+  props: [
+    "curso",
+    "cupos",
+    "inscritos",
+    "duracion",
+    "costo",
+    "terminado",
+    "fecha",
+    "id",
+    "url",
+    "descripcion",
+  ],
 };
 </script>
 
