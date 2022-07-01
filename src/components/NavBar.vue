@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="info">
     <div class="container">
-      <b-navbar-brand href="#">Cursos AlfaWeb</b-navbar-brand>
+      <b-navbar-brand>Cursos AlfaWeb</b-navbar-brand>
 
       <b-navbar-toggle
         v-if="activeLogin"

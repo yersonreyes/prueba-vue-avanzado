@@ -34,9 +34,40 @@
         />
       </tbody>
     </table>
-    <b-alert show variant="primary"> cantidad de alumnos inscritos</b-alert>
+    <b-alert show variant="success">
+      <b-icon icon="people-fill" scale="2" variant="success"></b-icon>
+      <span class="ml-3">
+        cantidad total de alumnos permitidos: {{ totalAlumnos }}</span
+      >
+    </b-alert>
     <b-alert show variant="primary">
-      cantidad de cursos: {{ cursos.length }}
+      <b-icon icon="person-check-fill" scale="2" variant="primary"></b-icon>
+      <span class="ml-3">
+        cantidad de alumnos inscritos: {{ totalInscritos }}</span
+      >
+    </b-alert>
+    <b-alert show variant="warning">
+      <b-icon icon="person-x-fill" scale="2" variant="warning"></b-icon>
+      <span class="ml-3">
+        cantidad total de cupos restantes {{ totalAlumnosRstantes }}</span
+      >
+    </b-alert>
+    <b-alert show variant="danger">
+      <b-icon icon="x-circle" scale="2" variant="danger"></b-icon>
+      <span class="ml-3"
+        >cantidad de cursos terminados: {{ totalCursosTerminados }}</span
+      >
+    </b-alert>
+    <b-alert show variant="info">
+      <b-icon icon="collection-fill" scale="2" variant="info"></b-icon>
+      <span class="ml-3">
+        cantidad total de cursos activos: {{ totalCursosActivos }}</span
+      >
+    </b-alert>
+
+    <b-alert show variant="danger">
+      <b-icon icon="collection-fill" scale="2" variant="danger"></b-icon>
+      <span class="ml-3"> cantidad total de cursos: {{ cantidadCursos }}</span>
     </b-alert>
   </div>
 </template>
@@ -45,7 +76,7 @@
 import ModalComponente from "@/components/ModalComponente.vue";
 import TableComponente from "@/components/TableComponente.vue";
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
     ModalComponente,
@@ -53,6 +84,14 @@ export default {
   },
   computed: {
     ...mapState("cursos", ["cursos"]),
+    ...mapGetters("cursos", [
+      "cantidadCursos",
+      "totalAlumnos",
+      "totalInscritos",
+      "totalAlumnosRstantes",
+      "totalCursosTerminados",
+      "totalCursosActivos",
+    ]),
   },
 
   methods: {

@@ -1,4 +1,5 @@
 import Firebase from "firebase";
+
 export const sessionModule = {
   namespaced: true,
   state: {
@@ -23,6 +24,12 @@ export const sessionModule = {
     },
   },
   actions: {
+    async subscribeToAuthStateChange({ commit }) {
+      Firebase.auth().onAuthStateChanged((user) => {
+        commit("SET_USER", user);
+      });
+    },
+
     async signInWithEmailAndPassword({ commit }, credentials) {
       commit("SET_LOADING", true);
       try {

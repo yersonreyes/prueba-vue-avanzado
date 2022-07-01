@@ -8,6 +8,43 @@ export const cursosModule = {
     loading: false,
   },
 
+  getters: {
+    cantidadCursos(state) {
+      return state.cursos.length;
+    },
+    totalAlumnos(state) {
+      return state.cursos.reduce((accumulator, curso) => {
+        accumulator += parseInt(curso.cupos);
+        return accumulator;
+      }, 0);
+    },
+
+    totalInscritos(state) {
+      return state.cursos.reduce((accumulator, curso) => {
+        accumulator += parseInt(curso.inscritos);
+        return accumulator;
+      }, 0);
+    },
+
+    totalAlumnosRstantes(state, getters) {
+      return getters.totalAlumnos - getters.totalInscritos;
+    },
+
+    totalCursosTerminados(state) {
+      return state.cursos.reduce((accumulator, curso) => {
+        if (curso.terminado === "true") accumulator++;
+        return accumulator;
+      }, 0);
+    },
+
+    totalCursosActivos(state) {
+      return state.cursos.reduce((accumulator, curso) => {
+        if (curso.terminado === "false") accumulator++;
+        return accumulator;
+      }, 0);
+    },
+  },
+
   mutations: {
     SET_CURSOS(state, newCurso) {
       state.cursos = newCurso;

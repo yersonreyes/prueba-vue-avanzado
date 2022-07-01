@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col-sm-12 col-md-6 col-lg-4">
     <b-card
       :title="curso"
       :img-src="url"
@@ -7,7 +7,7 @@
       img-top
       tag="article"
       style="max-width: 20rem"
-      class="mb-2"
+      class="mb-2 margen"
     >
       <b-list-group flush>
         <b-list-group-item
@@ -49,4 +49,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.margen {
+  margin: 0 auto;
+}
+</style>
