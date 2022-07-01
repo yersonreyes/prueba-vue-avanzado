@@ -1,12 +1,12 @@
 import Firebase from "firebase";
 
 Firebase.initializeApp({
-  apiKey: "AIzaSyA2NMfCQ5Hxqu2qySSCjejP8bV6MvJvy80",
-  authDomain: "prueba-vue-8d6ad.firebaseapp.com",
-  projectId: "prueba-vue-8d6ad",
-  storageBucket: "prueba-vue-8d6ad.appspot.com",
-  messagingSenderId: "119559055436",
-  appId: "1:119559055436:web:87a9c7d6d711312a69ece9",
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
 });
 
 export const DB = Firebase.firestore();
